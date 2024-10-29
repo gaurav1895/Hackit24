@@ -55,3 +55,25 @@ def take_turn(direc, board):
                         board[x - shift - 1][y] *= 2
                         board[x - shift][y] = 0
                         merge[x - shift - 1][y] = True
+
+    elif direc == 'LEFT ':
+        for x in range(4):
+            for y in range(4):
+                shift = 0
+                for z in range(y):
+                    if board[x][z] == 0:
+                        shift += 1
+                if shift > 0:
+                    board[x][y - shift] = board[x][y]
+                    board[x][y] = 0
+                if board[x][y - shift] == board[x][y - shift - 1] and not merge[x][y - shift - 1] \
+                        and not merge[x][y - shift]:
+                    board[x][y - shift - 1] *= 2
+                    board[x][y - shift] = 0
+                    merge[x][y - shift - 1] = True
+                    
+    elif direc == 'RIGHT':
+        pass
+
+
+    return board
