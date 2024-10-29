@@ -139,3 +139,21 @@ def draw_board():
     pygame.draw.rect(screen, colors['bg'], [0, 0, 400, 400], 0, 10)
     pass
 
+
+
+# draw tiles
+def draw_pieces(board):
+    for x in range(4):
+        for y in range(4):
+            value = board[x][y]
+            if value > 8:
+                val_col = colors['light text']
+            else:
+                val_col = colors['dark text']
+
+            if value <= 2048:
+                color = colors[value]
+            else:
+                color = colors['other']
+
+            pygame.draw.rect(screen, color, [y * 95 + 20, x * 95 + 20, 75, 75], 0, 5)
