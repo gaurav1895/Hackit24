@@ -28,3 +28,11 @@ colors = {0: (204, 192, 179),
           'light text': (249, 246, 242),
           'dark text': (119, 110, 101),
           'bg': (187, 173, 160)}
+
+# variables
+board_val = [[0 for _ in range(4)] for _ in range(4)]
+game_over = False
+spawn_new = True
+init_count = 0
+direction = ''
+
