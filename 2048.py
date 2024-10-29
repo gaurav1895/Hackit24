@@ -36,3 +36,22 @@ spawn_new = True
 init_count = 0
 direction = ''
 
+# taking turns in form of directions
+def take_turn(direc, board):
+    merge = [[False for _ in range(4)] for _ in range(4)]
+    if direc == 'UP':
+        for x in range(4):
+            for y in range(4):
+                shift = 0
+                if x > 0:
+                    for z in range(x):
+                        if board[z][y] == 0:
+                            shift += 1
+                    if shift > 0:
+                        board[x - shift][y] = board[x][y]
+                        board[x][y] = 0
+                    if board[x - shift - 1][y] == board[x - shift][y] and not merge[x - shift - 1][y] \
+                            and not merge[x - shift][y]:
+                        board[x - shift - 1][y] *= 2
+                        board[x - shift][y] = 0
+                        merge[x - shift - 1][y] = True
