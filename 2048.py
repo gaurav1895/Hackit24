@@ -157,3 +157,14 @@ def draw_pieces(board):
                 color = colors['other']
 
             pygame.draw.rect(screen, color, [y * 95 + 20, x * 95 + 20, 75, 75], 0, 5)
+
+            if value > 0:
+                val_len = len(str(value))
+                font = pygame.font.Font('freesansbold.ttf', 48 - (5 * val_len))
+                val_txt = font.render(str(value), True, val_col)
+                txt_rect = val_txt.get_rect(center=(y * 95 + 57, x * 95 + 57))
+                screen.blit(val_txt, txt_rect)
+                # box outline
+                pygame.draw.rect(screen, 'black', [y * 95 + 20, x * 95 + 20, 75, 75], 2, 5)
+
+
