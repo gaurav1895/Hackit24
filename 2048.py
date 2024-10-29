@@ -113,3 +113,29 @@ def new_pieces(board):
     if count < 1:
         full = True
     return board, full
+
+
+
+# spawn new pieces randomly
+def new_pieces(board):
+    count = 0
+    full = True
+    while any(0 in row for row in board) and count < 1:
+        row = random.randint(0, 3)
+        col = random.randint(0, 3)
+        if board[row][col] == 0:
+            count += 1
+            if random.randint(1, 10) == 10:
+                board[row][col] = 4
+            else:
+                board[row][col] = 2
+    if count < 1:
+        full = True
+    return board, full
+
+
+# draw bg for the board
+def draw_board():
+    pygame.draw.rect(screen, colors['bg'], [0, 0, 400, 400], 0, 10)
+    pass
+
