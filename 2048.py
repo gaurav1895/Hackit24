@@ -168,3 +168,19 @@ def draw_pieces(board):
                 pygame.draw.rect(screen, 'black', [y * 95 + 20, x * 95 + 20, 75, 75], 2, 5)
 
 
+
+# main game loop
+run = True
+while run:
+    timer.tick(fps)
+    screen.fill('gray')
+    draw_board()
+    draw_pieces(board_val)
+    if spawn_new or init_count < 2:
+        board_val, game_over = new_pieces(board_val)
+        spawn_new = False
+        init_count += 1
+    if direction != '':
+        board_val = take_turn(direction, board_val)
+        direction = ''
+        spawn_new = True
