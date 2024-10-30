@@ -184,3 +184,20 @@ while run:
         board_val = take_turn(direction, board_val)
         direction = ''
         spawn_new = True
+
+
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            run = False
+        if event.type == pygame.KEYUP:
+            if event.key == pygame.K_UP:
+                direction = 'UP'
+            elif event.key == pygame.K_DOWN:
+                direction = 'DOWN'
+            elif event.key == pygame.K_RIGHT:
+                direction = 'RIGHT'
+            elif event.key == pygame.K_LEFT:
+                direction = 'LEFT'
+
+    pygame.display.flip()
+pygame.quit()
